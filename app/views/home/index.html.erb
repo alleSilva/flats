@@ -1,9 +1,23 @@
 <header>
-  <h3>Boas vindas ao sistema de locação de apartamentos</h3>
+  <h3 class="p-2">Boas vindas ao sistema de locação de apartamentos</h3>
 </header>
 
-<div class="max-w-lg mx-auto mt-16 text-center max-w-sm rounded overflow-hidden shadow-lg p-10 bg-white">
-  <h1 class="mb-4 text-3xl font-black">Here are all our users!</h1>
-  <p class="text-lg leading-snug">If this looks nice, it means Tailwind is set up properly.</p>
+<% if @properties.empty? %>
+  <div>Nenhum imóvel disponível</div>
+<% end %>
+<section class="flex flex-wrap">
+<% @properties.each do |p| %>
+<div class="max-w-sm mx-auto mt-16 text-center max-w-sm rounded overflow-hidden shadow-lg p-10 bg-white">
+
+  <%= link_to p.title, property_path(p.id), class: "mb-4 text-2xl py-4 px-2 text-green-800 font-semibold hover:text-green-500 transition duration-300" %>
+  <p class="text-base leading-snug text-justify overflow-ellipsis">
+    <%= p.description %>
+  </p>
+  <p class="text-base leading-snug text-justify">
+    Quartos: <%= p.rooms %>
+  </p>
+
 </div>
+<% end %>
+</section>
 

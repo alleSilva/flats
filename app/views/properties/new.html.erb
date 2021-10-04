@@ -1,0 +1,36 @@
+<h1>Cadastro de imóveis</h1>
+
+<% if @property.errors.any? %>
+  <% @property.errors.full_messages.each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+
+<%= form_with(model: @property) do |f| %>
+  <%= f.label :title, 'Título' %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description, 'Descrição' %>
+  <%= f.text_field :description %>
+
+  <%= f.label :property_type_id, 'Tipo' %>
+  <%= f.collection_select :property_type_id, PropertyType.all, :id, :name %>
+
+  <%= f.label :rooms, 'Quartos' %>
+  <%= f.text_field :rooms %>
+
+  <%= f.label :bathrooms, 'Banheiros' %>
+  <%= f.text_field :bathrooms %>
+
+  <%= f.label :daily_rate, 'Diária' %>
+  <%= f.text_field :daily_rate %>
+
+  <%= f.check_box :pets %>
+  <%= f.label :pets, 'Aceita Pets' %>
+
+  <%= f.check_box :parking_slot %>
+  <%= f.label :parking_slot, 'Vaga de Estacionamento' %>
+
+  <%= f.submit 'Enviar' %>
+
+<% end %>

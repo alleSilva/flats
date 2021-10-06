@@ -24,7 +24,6 @@
 							>About</a>
 						<%= link_to 'Cadastrar Imóvel', new_property_path, class: "py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300" %>
 						<% if property_owner_signed_in? %>
-							<% current_property_owner.email, '#' %>
 							<%= link_to 'Sair', new_property_owner_session_path, class: "py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300" %>
 						<% else %>
 							<%= link_to 'Entrar', new_property_owner_session_path, class: "py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300" %>
